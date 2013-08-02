@@ -1,6 +1,6 @@
 # grunt-bulldoc
 
-> bulldoc generator for Grunt
+> Beautiful documentation generator from Markdown files
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -88,5 +88,7 @@ second-doc.html
 ## Contributing
 Sure.
 
-## Release History
-_(Nothing yet)_
+## License
+See `LICENSE-MIT`.
+
+_(MIT, obviously.)_
