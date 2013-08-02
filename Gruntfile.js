@@ -46,7 +46,7 @@ module.exports = function(grunt) {
       markdown_html: {
         files: { 'tmp/markdown_html/': 'test/fixtures/markdown_html/' }
       },
-      example: {
+      flatdoc_example: {
         files: { 'example/flatdoc': 'templates/flatdoc' }
       }
     },
@@ -88,6 +88,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['jshint', 'test']);
 
   // Bulid flatdoc template.
-  grunt.registerTask('flatdoc', ['clean', 'bulldoc:flatdoc', 'stylus:flatdoc', 'concat:flatdoc']);
+  grunt.registerTask('flatdoc', ['clean', 'stylus:flatdoc', 'concat:flatdoc', 'bulldoc:flatdoc_example']);
 
 };

@@ -33,7 +33,8 @@ a:hover{color:#228a8a}
 .content blockquote{color:#9090aa;text-shadow:0 1px 0 rgba(255,255,255,0.5)}
 .content h1,.content h2,.content h3{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-family:montserrat;padding-bottom:0;}
 .content h1 + p,.content h2 + p,.content h3 + p,.content h1 ul,.content h2 ul,.content h3 ul,.content h1 ol,.content h2 ol,.content h3 ol{padding-top:10px}
-.content h1,.content h2{text-transform:uppercase;letter-spacing:1px;font-size:1.5em}
+.content h1,.content h2{text-transform:uppercase;letter-spacing:1px}
+.content h1{font-size:1.6em}
 .content h2{font-size:1.2em}
 .content h3{font-size:1.2em}
 .content h1,.content h2,.content .big-heading,body.big-h3 .content h3{padding-top:80px;}
