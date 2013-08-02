@@ -55,8 +55,8 @@ Name of the HTML template, where parsed Markdown is injected. This file should b
 ### Usage Examples
 
 First, you will need a template which will be used to generate the documentation.
-There is one already available in `templates/flatdoc`.
-Copy files from this folder `somewhere`.
+There is one already available in `templates/flatdoc`, or in `node_modules/grunt-bulldoc/templates/flatdoc`.
+Copy files from this folder somewhere, for example into `docs/source/`.
 Now you can edit this template however you want.
 To generate the documentation, add this task into your Gruntfile:
 ```js
