@@ -92,3 +92,8 @@ Sure.
 See `LICENSE-MIT`.
 
 _(MIT, obviously.)_
+
+## Acknowledgements
+
+Original Flatdoc theme by [Rico Sta. Cruz](http://ricostacruz.com) and [contributors](http://github.com/rstacruz/flatdoc/contributors). Released under the [MIT
+License](http://www.opensource.org/licenses/mit-license.php).
