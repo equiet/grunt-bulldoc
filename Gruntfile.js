@@ -46,8 +46,8 @@ module.exports = function(grunt) {
       markdown_html: {
         files: { 'tmp/markdown_html/': 'test/fixtures/markdown_html/' }
       },
-      flatdoc: {
-        files: { 'tmp/flatdoc': 'templates/flatdoc' }
+      example: {
+        files: { 'example/flatdoc': 'templates/flatdoc' }
       }
     },
 

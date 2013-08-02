@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Your Project</title>
+  <meta name="description" content="Your Project description goes here.">
+
+  <link href="assets/style.css" rel="stylesheet">
+</head>
+<body class="big-h3 no-literate large-brief" role="flatdoc">
+
+  <div class="header">
+
+    <div class="left">
+
+      <h1>Your Project</h1>
+
+      <ul>
+        <li><a href="#">Header link</a></li>
+      </ul>
+
+    </div>
+
+    <div class="right">
+      How are you?
+    </div>
+
+  </div>
+
+  <div class="content-root">
+
+    <div class="menubar">
+
+      <div class="section">
+        <a class="big button" href="#" target="_blank">Big button</a>
+      </div>
+
+      <div class="menu section" role="flatdoc-menu"></div>
+
+      <div class="bottom section">
+        <p>Footer stuff.</p>
+      </div>
+
+    </div>
+
+    <div class="content" role="flatdoc-content">
+      <h1>Flatdoc template</h1>
+<p>This is a sample template for <a href="https://github.com/equiet/grunt-bulldoc">grunt-bulldoc</a>.</p>
+<p>This should be your starting point. Simply copy this template and start filling it with your content.</p>
+<h2>Build</h2>
+<p>This theme uses <a href="http://learnboost.github.io/stylus/">Stylus</a>. You can:</p>
+<ul>
+<li>edit exported CSS (not recommended) or</li>
+<li>edit <em>Stylus</em> source files and then compile it using Grunt (yay)</li>
+</ul>
+<h3>Compile Stylus</h3>
+<p>You will need <a href="https://github.com/gruntjs/grunt-contrib-stylus">grunt-contrib-stylus</a> to do this. Follow their installation instructions.
+Then make a <code>Gruntfile.js</code> task for it, like this:</p>
+<pre><code class="lang-js">grunt.loadNpmTasks(<span class="string">'grunt-contrib-stylus'</span>);
+
+grunt.initConfig({
+  <span class="method">stylus:</span> {
+    <span class="method">flatdoc:</span> {
+      <span class="method">files:</span> { <span class="string">'YOUR_TEMPLATE_DIR/assets/style.css'</span>: [<span class="string">'YOUR_TEMPLATE_DIR/assets/source/css/*.styl'</span>] }
+    }
+  }
+});</code></pre>
+<h3>Compile JavaScript</h3>
+<p>While you are there, you can make a task for concatenating JavaScript files using <a href="https://github.com/gruntjs/grunt-contrib-concat">grunt-contrib-concat</a>:</p>
+<pre><code class="lang-js">grunt.loadNpmTasks(<span class="string">'grunt-contrib-concat'</span>);
+
+grunt.initConfig({
+  <span class="method">concat:</span> {
+    <span class="method">flatdoc:</span> {
+      <span class="method">files:</span> { <span class="string">'YOUR_TEMPLATE_DIR/assets/script.js'</span>: [<span class="string">'YOUR_TEMPLATE_DIR/assets/source/js/*.js'</span>] }
+    }
+  }
+});</code></pre>
+<h2>Markdown extras</h2>
+<p>Flatdoc offers a few harmless, unobtrusive extras that come in handy in building
+documentation sites.</p>
+<h4>Code highlighting</h4>
+<p>You can use Markdown code fences to make syntax-highlighted text. Simply
+surround your text with three backticks. This works in GitHub as well.
+See <a href="https://help.github.com/articles/github-flavored-markdown#syntax-highlighting">GitHub Syntax Highlighting</a> for more info.</p>
+<pre><code class="lang-html">  <span class="tag">&lt;<span class="title">html</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">'script.js'</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">'style.css'</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"class"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">p</span>&gt;</span>Paragraph.<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></pre>
+<h4>Blockquotes</h4>
+<p>Blockquotes show up as side figures. This is useful for providing side
+information or non-code examples.</p>
+<blockquote>
+<p>Blockquotes are blocks that begin with <code>&gt;</code>.</p>
+</blockquote>
+<h4>Smart quotes</h4>
+<p>Single quotes, double quotes, and double-hyphens are automatically replaced to
+their typographically-accurate equivalent. This, of course, does not apply to
+<code>&lt;code&gt;</code> and <code>&lt;pre&gt;</code> blocks to leave code alone.</p>
+<blockquote>
+<p>&quot;From a certain point onward there is no longer any turning back. That is the
+point that must be reached.&quot;
+--Franz Kafka</p>
+</blockquote>
+<h4>Buttons</h4>
+<p>If your link text has a <code>&gt;</code> at the end (for instance: <code>Continue &gt;</code>), they show
+up as buttons.</p>
+<blockquote>
+<p><a href="#">Button &gt;</a></p>
+</blockquote>
+<h1>Customizing</h1>
+<h2>Mandatory subheading</h2>
+<h3>Theme options</h3>
+<p>For the default theme (<em>theme-white</em>), You can set theme options by adding
+classes to the <code>&lt;body&gt;</code> element. The available options are:</p>
+<h4>big-h3</h4>
+<p>Makes 3rd-level headings bigger.</p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">body</span> <span class="attribute">class</span>=<span class="value">'big-h3'</span>&gt;</span></code></pre>
+<h4>no-literate</h4>
+<p>Disables &quot;literate&quot; mode, where code appears on the right and content text
+appear on the left.</p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">body</span> <span class="attribute">class</span>=<span class="value">'no-literate'</span>&gt;</span></code></pre>
+<h4>large-brief</h4>
+<p>Makes the opening paragraph large.</p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">body</span> <span class="attribute">class</span>=<span class="value">'large-brief'</span>&gt;</span></code></pre>
+<h3>Adding more markup</h3>
+<p>You have full control over the HTML file, just add markup wherever you see fit.
+As long as you leave <code>role=&#39;flatdoc-content&#39;</code> and <code>role=&#39;flatdoc-menu&#39;</code> empty as
+they are, you&#39;ll be fine.</p>
+<p>Here are some ideas to get you started.</p>
+<ul>
+<li>Add a CSS file to make your own CSS adjustments.</li>
+<li>Add a &#39;Tweet&#39; button on top.</li>
+<li>Add Google Analytics.</li>
+<li>Use CSS to style the IDs in menus (<code>#acknowledgements + p</code>).</li>
+</ul>
+<h3>JavaScript hooks</h3>
+<p>Flatdoc emits the events <code>flatdoc:loading</code> and <code>flatdoc:ready</code> to help you make
+custom behavior when the document loads.</p>
+<pre><code class="lang-js"><span class="variable">$(</span>document).on(<span class="string">'flatdoc:ready'</span>, function() {
+  <span class="comment">// I don't like this section to appear</span>
+  <span class="variable">$(</span><span class="string">"#acknowledgements"</span>).remove();
+});</code></pre>
+<h1>Acknowledgements</h1>
+<h2>Mandatory subheading</h2>
+<p>Original Flatdoc theme by <a href="http://ricostacruz.com">Rico Sta. Cruz</a> and <a href="http://github.com/rstacruz/flatdoc/contributors">contributors</a>. Released under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT
+License</a>.</p>
+<p>Modified for <a href="https://github.com/equiet/grunt-bulldoc">grunt-bulldoc</a> by <a href="https://github.com/equiet/">Equiet</a>.</p>
+
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="assets/jquery-1.9.1.min.js"><\/script>')</script>
+  <script src="assets/script.js"></script>
+
+</body>
+</html>
