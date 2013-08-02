@@ -9,7 +9,8 @@
 'use strict';
 
 
-var marked = require('marked'),
+var path = require('path'),
+    marked = require('marked'),
     mustache = require('mustache'),
     ncp = require('ncp').ncp,
     highlight = require('highlight.js');
@@ -35,11 +36,9 @@ module.exports = function(grunt) {
       templateDir: 'template/',
       template: 'template.html'
     });
-    options.templateDir += '/';
 
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
-      f.dest += '/';
 
       // Handle only first src
       if (f.src.length !== 1) {
@@ -47,7 +46,7 @@ module.exports = function(grunt) {
       }
 
       // Get source filepath
-      var sourcePath = f.src[0] + '/';
+      var sourcePath = f.src[0];
 
       // Make sure all needed files exist
 
@@ -55,12 +54,12 @@ module.exports = function(grunt) {
         grunt.fail.warn('Source file "' + sourcePath + '" has to be a directory.');
       }
 
-      var templateDir = sourcePath + options.templateDir;
+      var templateDir = path.join(sourcePath, options.templateDir);
       if (!grunt.file.isDir(templateDir)) {
         grunt.fail.warn('Template directory "' + templateDir + '" should exist.');
       }
 
-      var templatePath = templateDir + options.template;
+      var templatePath = path.join(templateDir, options.template);
       if (!grunt.file.exists(templatePath)) {
         grunt.fail.warn('Template file "' + templatePath + '" should exist.');
       }
@@ -74,13 +73,13 @@ module.exports = function(grunt) {
         }
 
         // Remove template file
-        grunt.file.delete(f.dest + options.template);
+        grunt.file.delete(path.join(f.dest, options.template));
 
         // Read main template file
         var template = grunt.file.read(templatePath);
 
         // Get Markdown files
-        var mdFiles = grunt.file.expand(sourcePath + '*.md');
+        var mdFiles = grunt.file.expand(path.join(sourcePath, '*.md'));
 
         mdFiles.forEach(function(filepath) {
 
@@ -97,10 +96,11 @@ module.exports = function(grunt) {
           template = mustache.render(template, {content: parsed});
 
           // Write template
-          grunt.file.write(f.dest + name, template);
+          var dest = path.join(f.dest, name);
+          grunt.file.write(dest, template);
 
           // Print a success message.
-          grunt.log.writeln('File "' + f.dest + name + '" created.');
+          grunt.log.writeln('File "' + dest + '" created.');
 
         });
 

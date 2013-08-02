@@ -36,7 +36,7 @@ module.exports = function(grunt) {
       copy_template_options: {
         options: {
           templateDir: 'test_template/',
-          template: 'test_index.html'
+          template: 'test_template.html'
         },
         files: { 'tmp/copy_template_options/': 'test/fixtures/copy_template_options/' }
       },

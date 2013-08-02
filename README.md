@@ -37,53 +37,56 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.templateDir
 Type: `String`
-Default value: `',  '`
+Default value: `'template/'`
 
-A string value that is used to do something with whatever.
+Name of the template directory in your documentation folder. You probably don't want to change this.
 
-#### options.punctuation
+#### options.template
 Type: `String`
-Default value: `'.'`
+Default value: `template.html`
 
-A string value that is used to do something else with whatever else.
+Name of the HTML template, where parsed Markdown is injected. This file should be in `options.templateDir` folder. You probably don't want to change this either.
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
+First, you will need a template which will be used to generate the documentation.
+There is one already available in `templates/flatdoc`.
+Copy files from this folder `somewhere`.
+Now you can edit this template however you want.
+To generate the documentation, add this task into your Gruntfile:
 ```js
+grunt.loadNpmTasks('grunt-bulldoc');
 grunt.initConfig({
   bulldoc: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+    example: {
+      files: { 'docs/result/': 'docs/source/' }
+    }
+  }
 })
 ```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+Your `docs/source/` folder can look like this:
+```
+template/
+  template.html
+  assets/
+    ...
+first-doc.md
+second-doc.md
+```
 
-```js
-grunt.initConfig({
-  bulldoc: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
+Then your `docs/results/` folder will look like this:
+```
+assets/
+  ...
+first-doc.html
+second-doc.html
 ```
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+Sure.
 
 ## Release History
 _(Nothing yet)_

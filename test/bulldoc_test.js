@@ -28,28 +28,32 @@ exports.bulldoc = {
     done();
   },
   copy_template: function(test) {
-    test.expect(3);
+    test.expect(2);
 
-    test.ok(grunt.file.exists('tmp/copy_template/index.html'), 'index.html should exist.');
     test.ok(grunt.file.exists('tmp/copy_template/folder/'), 'folder/ should exist.');
     test.ok(grunt.file.exists('tmp/copy_template/folder/test.txt'), 'folder/test.txt should exist.');
 
     test.done();
   },
   copy_template_options: function(test) {
-    test.expect(3);
+    test.expect(2);
 
-    test.ok(grunt.file.exists('tmp/copy_template_options/test_index.html'), 'test_index.html should exist.');
     test.ok(grunt.file.exists('tmp/copy_template_options/folder/'), 'folder/ should exist.');
     test.ok(grunt.file.exists('tmp/copy_template_options/folder/test.txt'), 'folder/test.txt should exist.');
 
     test.done();
   },
   markdown: function(test) {
-    test.expect(1);
+    test.expect(2);
 
-    var actual = grunt.file.read('tmp/markdown/index.html');
-    var expected = grunt.file.read('test/expected/markdown/index.html');
+    var actual, expected;
+
+    actual = grunt.file.read('tmp/markdown/result1.html');
+    expected = grunt.file.read('test/expected/markdown/result1.html');
+    test.equal(actual, expected, 'Markdown file should be parsed into HTML.');
+
+    actual = grunt.file.read('tmp/markdown/result2.html');
+    expected = grunt.file.read('test/expected/markdown/result2.html');
     test.equal(actual, expected, 'Markdown file should be parsed into HTML.');
 
     test.done();
@@ -57,8 +61,8 @@ exports.bulldoc = {
   markdown_html: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/markdown_html/index.html');
-    var expected = grunt.file.read('test/expected/markdown_html/index.html');
+    var actual = grunt.file.read('tmp/markdown_html/mixed.html');
+    var expected = grunt.file.read('test/expected/markdown_html/mixed.html');
     test.equal(actual, expected, 'Markdown file should be parsed into HTML and merged with another HTML from the template.');
 
     test.done();
