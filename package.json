@@ -1,23 +1,23 @@
 {
-  "name": "grunt-flatdoc",
-  "description": "Flatdoc generator for Grunt",
+  "name": "grunt-bulldoc",
+  "description": "Documentation generator from Markdown and HTML template",
   "version": "0.1.0",
-  "homepage": "https://github.com/equiet/grunt-flatdoc",
+  "homepage": "https://github.com/equiet/grunt-bulldoc",
   "author": {
     "name": "Jakub Jurových",
     "email": "equiet@equiet.sk"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/equiet/grunt-flatdoc.git"
+    "url": "git://github.com/equiet/grunt-bulldoc.git"
   },
   "bugs": {
-    "url": "https://github.com/equiet/grunt-flatdoc/issues"
+    "url": "https://github.com/equiet/grunt-bulldoc/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/equiet/grunt-flatdoc/blob/master/LICENSE-MIT"
+      "url": "https://github.com/equiet/grunt-bulldoc/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
@@ -38,5 +38,13 @@
   },
   "keywords": [
     "gruntplugin"
-  ]
+  ],
+  "dependencies": {
+    "marked": "~0.2.9",
+    "mustache": "~0.7.2",
+    "ncp": "~0.4.2",
+    "highlight.js": "~7.3.0",
+    "grunt-contrib-stylus": "~0.7.0",
+    "grunt-contrib-concat": "~0.3.0"
+  }
 }

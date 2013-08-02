@@ -1,6 +1,6 @@
 /*
- * grunt-flatdoc
- * https://github.com/equiet/grunt-flatdoc
+ * grunt-bulldoc
+ * https://github.com/equiet/grunt-bulldoc
  *
  * Copyright (c) 2013 Jakub Jurových
  * Licensed under the MIT license.
@@ -16,42 +16,54 @@ module.exports = function(grunt) {
       all: [
         'Gruntfile.js',
         'tasks/*.js',
-        '<%= nodeunit.tests %>',
+        '<%= nodeunit.tests %>'
       ],
       options: {
-        jshintrc: '.jshintrc',
-      },
+        jshintrc: '.jshintrc'
+      }
     },
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp'],
+      tests: ['tmp']
     },
 
     // Configuration to be run (and then tested).
-    flatdoc: {
-      default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+    bulldoc: {
+      copy_template: {
+        files: { 'tmp/copy_template/': 'test/fixtures/copy_template/' }
       },
-      custom_options: {
+      copy_template_options: {
         options: {
-          separator: ': ',
-          punctuation: ' !!!',
+          templateDir: 'test_template/',
+          template: 'test_index.html'
         },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+        files: { 'tmp/copy_template_options/': 'test/fixtures/copy_template_options/' }
       },
+      markdown: {
+        files: { 'tmp/markdown/': 'test/fixtures/markdown/' }
+      },
+      markdown_html: {
+        files: { 'tmp/markdown_html/': 'test/fixtures/markdown_html/' }
+      }
     },
 
     // Unit tests.
     nodeunit: {
-      tests: ['test/*_test.js'],
+      tests: ['test/*_test.js']
     },
+
+    // Build templates.
+    stylus: {
+      flatdoc: {
+        files: { 'templates/flatdoc/template/assets/style.css': ['templates/flatdoc/template/assets/source/css/*.styl'] }
+      }
+    },
+    concat: {
+      flatdoc: {
+        files: { 'templates/flatdoc/template/assets/script.js': ['templates/flatdoc/template/assets/source/js/*.js'] }
+      }
+    }
 
   });
 
@@ -62,12 +74,17 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'flatdoc', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'bulldoc', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
+
+  // Bulid flatdoc template.
+  grunt.registerTask('flatdoc', ['stylus:flatdoc', 'concat:flatdoc']);
 
 };
