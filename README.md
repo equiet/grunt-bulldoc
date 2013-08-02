@@ -1,6 +1,9 @@
 # grunt-bulldoc
 
-> Beautiful documentation generator from Markdown files
+> Beautiful documentation generator from Markdown files for Grunt
+
+## Demo
+http://htmlpreview.github.io/?https://github.com/equiet/grunt-bulldoc/blob/master/example/flatdoc/Readme.html
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
