@@ -1,7 +1,7 @@
 {
   "name": "grunt-bulldoc",
   "description": "Documentation generator from Markdown and HTML template",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/equiet/grunt-bulldoc",
   "author": {
     "name": "Jakub Jurových",
@@ -37,7 +37,7 @@
     "grunt": "~0.4.1"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin", "documentation", "docs", "markdown"
   ],
   "dependencies": {
     "marked": "~0.2.9",
