@@ -182,6 +182,10 @@ a
     letter-spacing: 1px
     font-size: 1.5em
 
+  h2 {
+    font-size: 1.2em
+  }
+
   h3
     font-size: 1.2em
 
@@ -530,7 +534,7 @@ a.big.button
   a.level-1
     font-family: montserrat, sans-serif
     text-transform: uppercase
-    font-size: 0.9em
+    font-size: 1em
     font-weight: bold
     &, &:visited
       color: $grey
@@ -542,7 +546,7 @@ a.big.button
 
   a.level-3
     font-weight: normal
-    font-size: 0.9em
+    font-size: 1em
     padding-left: 10px
 
   a.active
@@ -567,11 +571,11 @@ a.big.button
 // Syntax highlighting
 
 code
-  .string, .number
+  .string, .number, .value, .regexp
     color: #3ac
   .init
     color: #383
-  .keyword
+  .keyword, .title
     font-weight: bold
   .comment
     color: $grey * 1.2

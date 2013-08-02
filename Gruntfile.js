@@ -88,6 +88,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['jshint', 'test']);
 
   // Bulid flatdoc template.
-  grunt.registerTask('flatdoc', ['stylus:flatdoc', 'concat:flatdoc']);
+  grunt.registerTask('flatdoc', ['clean', 'bulldoc:flatdoc', 'stylus:flatdoc', 'concat:flatdoc']);
 
 };

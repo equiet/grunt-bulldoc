@@ -15,6 +15,14 @@ var marked = require('marked'),
     highlight = require('highlight.js');
 
 
+// Setup marked
+marked.setOptions({
+  highlight: function(code, lang, cb) {
+    return highlight.highlightAuto(code, lang).value;
+  }
+});
+
+
 module.exports = function(grunt) {
 
   grunt.registerMultiTask('bulldoc', 'Generate HTML code from Markdown.', function() {
@@ -25,7 +33,7 @@ module.exports = function(grunt) {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       templateDir: 'template/',
-      template: 'index.html'
+      template: 'template.html'
     });
     options.templateDir += '/';
 
@@ -65,30 +73,36 @@ module.exports = function(grunt) {
           grunt.fail.warn('Error while copying template files from "' + templateDir + '" to "' + f.dest + '": ' + err);
         }
 
+        // Remove template file
+        grunt.file.delete(f.dest + options.template);
+
         // Read main template file
         var template = grunt.file.read(templatePath);
 
         // Get Markdown files
-        var docs = grunt.file.expand(sourcePath + '*.md').map(function(path) {
-          return grunt.file.read(path);
+        var mdFiles = grunt.file.expand(sourcePath + '*.md');
+
+        mdFiles.forEach(function(filepath) {
+
+          // Get name of the file
+          var name = filepath.split('/').pop().replace(/\.md$/, '.html');
+
+          // Read Markdown file
+          var file = grunt.file.read(filepath);
+
+          // Parse Markdown
+          var parsed = marked(file);
+
+          // Insert markdown into template
+          template = mustache.render(template, {content: parsed});
+
+          // Write template
+          grunt.file.write(f.dest + name, template);
+
+          // Print a success message.
+          grunt.log.writeln('File "' + f.dest + name + '" created.');
+
         });
-
-        // Parse Markdown
-        marked.setOptions({
-          highlight: function(code, lang, cb) {
-            return highlight.highlightAuto(code, lang).value;
-          }
-        });
-        var parsed = marked(docs.join("\n"));
-
-        // Insert markdown into template
-        template = mustache.render(template, {content: parsed});
-
-        // Write template
-        grunt.file.write(f.dest + options.template, template);
-
-        // Print a success message.
-        grunt.log.writeln('File "' + f.dest + options.template + '" created. Parsed ' + docs.length + ' .md files.');
 
         done();
 
