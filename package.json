@@ -34,10 +34,13 @@
     "grunt": "~0.4.1"
   },
   "peerDependencies": {
-    "grunt": "~0.4.1"
+    "grunt": ">=0.4.0"
   },
   "keywords": [
-    "gruntplugin", "documentation", "docs", "markdown"
+    "gruntplugin",
+    "documentation",
+    "docs",
+    "markdown"
   ],
   "dependencies": {
     "marked": "~0.2.9",
